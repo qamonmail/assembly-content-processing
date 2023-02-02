@@ -10,9 +10,9 @@
 
         import { MessageContentV1Pack, MessageContentV1Unpack } from "./build/release.js";
 
-        const subjectBytes = new TextEncoder().encode("Subject");
-        const bodyBytes = new TextEncoder().encode("odyBodyBodyBodyBodyBodyBodyBodyBodyB");
-        const signature = new TextEncoder().encode("Signature");
+        const subjectBytes = new TextEncoder().encode("Nullam dictum felis eu pede mollis pretium.");
+        const bodyBytes = new TextEncoder().encode("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.");
+        const signature = new TextEncoder().encode("Integer tincidunt. Cras dapibus.");
         const attacheds = new TextEncoder().encode(`${ATTACHEDS}`);
         const previousMessageAddress = new TextEncoder().encode("0:4758012a7dfd31bef6203721d11f9d5de07d4150d011090c9ba2fadc28343712");
 
@@ -20,19 +20,9 @@
             const message = MessageContentV1Pack(subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes)
             console.log(message)
 
-
             const version = MessageContentV1Unpack(message)
             console.log(version)
         }
-
-
-        console.log("====")
-        console.log(subjectBytes)
-        console.log(signature)
-        console.log(attacheds)
-        console.log(previousMessageAddress)
-        console.log(bodyBytes)
-
     </script>
 </head>
 

@@ -1,8 +1,12 @@
 // The entry file of your WebAssembly module.
 
-export default class SmartBuffer {
+class SmartBuffer {
   private _offset: i32 = 0;
   constructor(private readonly _bytes: Uint8Array) { }
+
+  get offset(): i32 {
+    return this._offset;
+  }
 
   static ofSize(size: i32): SmartBuffer {
     return new SmartBuffer(new Uint8Array(size));
@@ -29,14 +33,39 @@ export default class SmartBuffer {
     this._offset += val.length;
   }
 
+  writeBuffer(val: SmartBuffer): void {
+    this._bytes.set(val.bytes, this._offset);
+    this._offset += val.bytes.length;
+  }
+
+  writeBytes8Length(val: Uint8Array): void {
+    this.writeUint8(val.length);
+    this.writeBytes(val);
+  }
+
+  writeBuffer8Length(val: SmartBuffer): void {
+    this.writeUint8(val.bytes.length);
+    this.writeBuffer(val);
+  }
+
   writeBytes16Length(val: Uint8Array): void {
     this.writeUint16(val.length);
     this.writeBytes(val);
   }
 
+  writeBuffer16Length(val: SmartBuffer): void {
+    this.writeUint16(val.bytes.length);
+    this.writeBuffer(val);
+  }
+
   writeBytes32Length(val: Uint8Array): void {
     this.writeUint32(val.length);
     this.writeBytes(val);
+  }
+
+  writeBuffer32Length(val: SmartBuffer): void {
+    this.writeUint32(val.bytes.length);
+    this.writeBuffer(val);
   }
 
   readUint8(): i32 {
@@ -64,8 +93,28 @@ export default class SmartBuffer {
     return new SmartBuffer(this._bytes.slice(this._offset, (this._offset += length)));
   }
 
+  readBytes8Length(): Uint8Array {
+    return this.readBytes(this.readUint8());
+  }
+
+  readBuffer8Length(): SmartBuffer {
+    return this.readBuffer(this.readUint8());
+  }
+
   readBytes16Length(): Uint8Array {
     return this.readBytes(this.readUint16());
+  }
+
+  readBuffer16Length(): SmartBuffer {
+    return this.readBuffer(this.readUint16());
+  }
+
+  readBytes32Length(): Uint8Array {
+    return this.readBytes(this.readUint32());
+  }
+
+  readBuffer32Length(): SmartBuffer {
+    return this.readBuffer(this.readUint32());
   }
 
   get bytes(): Uint8Array {
@@ -74,7 +123,7 @@ export default class SmartBuffer {
 
 }
 
-
+const VERSION = 0x01;
 export function MessageContentV1Pack(
   subjectBytes: Uint8Array,
   signature: Uint8Array,
@@ -82,7 +131,6 @@ export function MessageContentV1Pack(
   previousMessageAddress: Uint8Array,
   bodyBytes: Uint8Array,
 ): Uint8Array {
-  const VERSION = 0x01;
 
   const buf = SmartBuffer.ofSize(1 + 2 + subjectBytes.length + 2 + signature.length + 2 + attacheds.length + 2 + previousMessageAddress.length + bodyBytes.length);
 
@@ -98,16 +146,19 @@ export function MessageContentV1Pack(
 
 export function MessageContentV1Unpack(
   data: Uint8Array
-): Uint8Array {
-
+): Uint8Array[] {
   const buf = new SmartBuffer(data);
-
   const version = buf.readUint8();
+
+  if (version !== VERSION) {
+    return [new Uint8Array(0)]
+  }
+
   const subjectBytes = buf.readBytes16Length();
   const signature = buf.readBytes16Length();
   const attacheds = buf.readBytes16Length();
   const previousMessageAddress = buf.readBytes16Length();
   const bodyBytes = data.slice(version + 2 + subjectBytes.length + 2 + signature.length + 2 + attacheds.length + 2 + previousMessageAddress.length);
 
-  return bodyBytes
+  return [subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes]
 }

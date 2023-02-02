@@ -13,6 +13,6 @@ export declare function MessageContentV1Pack(subjectBytes: Uint8Array, signature
 /**
  * assembly/index/MessageContentV1Unpack
  * @param data `~lib/typedarray/Uint8Array`
- * @returns `~lib/typedarray/Uint8Array`
+ * @returns `~lib/array/Array<~lib/typedarray/Uint8Array>`
  */
-export declare function MessageContentV1Unpack(data: Uint8Array): Uint8Array;
+export declare function MessageContentV1Unpack(data: Uint8Array): Array<Uint8Array>;

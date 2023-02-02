@@ -34,9 +34,9 @@ async function instantiate(module, imports = {}) {
       }
     },
     MessageContentV1Unpack(data) {
-      // assembly/index/MessageContentV1Unpack(~lib/typedarray/Uint8Array) => ~lib/typedarray/Uint8Array
+      // assembly/index/MessageContentV1Unpack(~lib/typedarray/Uint8Array) => ~lib/array/Array<~lib/typedarray/Uint8Array>
       data = __lowerTypedArray(Uint8Array, 4, 0, data) || __notnull();
-      return __liftTypedArray(Uint8Array, exports.MessageContentV1Unpack(data) >>> 0);
+      return __liftArray(pointer => __liftTypedArray(Uint8Array, __getU32(pointer)), 2, exports.MessageContentV1Unpack(data) >>> 0);
     },
   }, exports);
   function __liftString(pointer) {
@@ -49,6 +49,15 @@ async function instantiate(module, imports = {}) {
       string = "";
     while (end - start > 1024) string += String.fromCharCode(...memoryU16.subarray(start, start += 1024));
     return string + String.fromCharCode(...memoryU16.subarray(start, end));
+  }
+  function __liftArray(liftElement, align, pointer) {
+    if (!pointer) return null;
+    const
+      dataStart = __getU32(pointer + 4),
+      length = __dataview.getUint32(pointer + 12, true),
+      values = new Array(length);
+    for (let i = 0; i < length; ++i) values[i] = liftElement(dataStart + (i << align >>> 0));
+    return values;
   }
   function __liftTypedArray(constructor, pointer) {
     if (!pointer) return null;

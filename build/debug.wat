@@ -3473,7 +3473,7 @@
   local.get $6
   i32.store $0
   local.get $6
-  i32.const 2
+  global.get $assembly/index/VERSION
   call $assembly/index/SmartBuffer#writeUint8
   local.get $buf
   local.set $6

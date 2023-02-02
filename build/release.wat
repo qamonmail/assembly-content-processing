@@ -2516,7 +2516,7 @@
    i32.store $0
    local.get $5
    local.get $7
-   i32.const 2
+   i32.const 1
    call $~lib/typedarray/Uint8Array#__set
    global.get $~lib/memory/__stack_pointer
    i32.const 12

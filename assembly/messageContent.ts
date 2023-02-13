@@ -20,7 +20,7 @@ function PackV1(
   attacheds: Uint8Array,
   previousMessageAddress: Uint8Array,
   bodyBytes: Uint8Array,
-) {
+): Uint8Array{
   const buf = SmartBuffer.ofSize(1 + 2 + subjectBytes.length + 2 + signature.length + 2 + attacheds.length + 2 + previousMessageAddress.length + bodyBytes.length);
 
   buf.writeUint8(V1);

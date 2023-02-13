@@ -1,14 +1,14 @@
 (module
  (type $i32_=>_i32 (func (param i32) (result i32)))
  (type $i32_=>_none (func (param i32)))
- (type $none_=>_none (func))
  (type $i32_i32_=>_none (func (param i32 i32)))
- (type $i32_i32_i32_=>_none (func (param i32 i32 i32)))
  (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
- (type $i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32) (result i32)))
+ (type $none_=>_none (func))
+ (type $i32_i32_i32_=>_none (func (param i32 i32 i32)))
  (type $i32_i32_i32_i32_=>_none (func (param i32 i32 i32 i32)))
  (type $none_=>_i32 (func (result i32)))
  (type $i32_i32_i32_=>_i32 (func (param i32 i32 i32) (result i32)))
+ (type $i32_i32_i32_i32_i32_=>_i32 (func (param i32 i32 i32 i32 i32) (result i32)))
  (import "env" "abort" (func $~lib/builtins/abort (param i32 i32 i32 i32)))
  (global $~lib/rt/itcms/total (mut i32) (i32.const 0))
  (global $~lib/rt/itcms/threshold (mut i32) (i32.const 0))
@@ -34,34 +34,36 @@
  (data (i32.const 1304) "\02\00\00\00\14\00\00\00~\00l\00i\00b\00/\00r\00t\00.\00t\00s")
  (data (i32.const 1372) "<")
  (data (i32.const 1384) "\02\00\00\00\1e\00\00\00~\00l\00i\00b\00/\00r\00t\00/\00t\00l\00s\00f\00.\00t\00s")
- (data (i32.const 1436) ",")
- (data (i32.const 1448) "\02\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h")
- (data (i32.const 1484) "<")
- (data (i32.const 1496) "\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s")
+ (data (i32.const 1436) "<")
+ (data (i32.const 1448) "\02\00\00\00$\00\00\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00.\00t\00s")
+ (data (i32.const 1500) ",")
+ (data (i32.const 1512) "\02\00\00\00\1c\00\00\00I\00n\00v\00a\00l\00i\00d\00 \00l\00e\00n\00g\00t\00h")
  (data (i32.const 1548) "<")
- (data (i32.const 1560) "\02\00\00\00$\00\00\00~\00l\00i\00b\00/\00t\00y\00p\00e\00d\00a\00r\00r\00a\00y\00.\00t\00s")
+ (data (i32.const 1560) "\02\00\00\00&\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00b\00u\00f\00f\00e\00r\00.\00t\00s")
  (data (i32.const 1612) ",")
  (data (i32.const 1624) "\02\00\00\00\1a\00\00\00~\00l\00i\00b\00/\00a\00r\00r\00a\00y\00.\00t\00s")
  (data (i32.const 1660) "<")
  (data (i32.const 1672) "\02\00\00\00*\00\00\00O\00b\00j\00e\00c\00t\00 \00a\00l\00r\00e\00a\00d\00y\00 \00p\00i\00n\00n\00e\00d")
  (data (i32.const 1724) "<")
  (data (i32.const 1736) "\02\00\00\00(\00\00\00O\00b\00j\00e\00c\00t\00 \00i\00s\00 \00n\00o\00t\00 \00p\00i\00n\00n\00e\00d")
- (data (i32.const 1792) "\08\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00A\00\00\00\00\00\00\00\02A\00\00\02\t")
+ (data (i32.const 1792) "\08\00\00\00 \00\00\00 \00\00\00 \00\00\00\00\00\00\00A\00\00\00\02A\00\00\00\00\00\00\02\t")
  (export "__new" (func $~lib/rt/itcms/__new))
  (export "__pin" (func $~lib/rt/itcms/__pin))
  (export "__unpin" (func $~lib/rt/itcms/__unpin))
  (export "__collect" (func $~lib/rt/itcms/__collect))
  (export "__rtti_base" (global $~lib/rt/__rtti_base))
  (export "memory" (memory $0))
- (export "MessageContentV1Pack" (func $export:assembly/index/MessageContentV1Pack))
- (export "MessageContentV1Unpack" (func $export:assembly/index/MessageContentV1Unpack))
+ (export "ContainerUnpack" (func $export:assembly/containerContent/ContainerUnpack))
+ (export "ContainerPack" (func $export:assembly/containerContent/ContainerPack))
+ (export "MessageContentPack" (func $export:assembly/messageContent/MessageContentPack))
+ (export "MessageContentUnpack" (func $export:assembly/messageContent/MessageContentUnpack))
  (start $~start)
  (func $~lib/rt/itcms/visitRoots
   (local $0 i32)
   (local $1 i32)
   i32.const 1248
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
-  i32.const 1456
+  i32.const 1520
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
   i32.const 1056
   call $byn-split-outlined-A$~lib/rt/itcms/__visit
@@ -1685,8 +1687,8 @@
     block $folding-inner0
      block $invalid
       block $~lib/array/Array<i32>
-       block $~lib/array/Array<~lib/typedarray/Uint8Array>
-        block $assembly/index/SmartBuffer
+       block $assembly/smartBuffer/SmartBuffer
+        block $~lib/array/Array<~lib/typedarray/Uint8Array>
          block $~lib/string/String
           block $~lib/arraybuffer/ArrayBuffer
            block $~lib/object/Object
@@ -1694,7 +1696,7 @@
             i32.const 8
             i32.sub
             i32.load $0
-            br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $folding-inner2 $folding-inner2 $assembly/index/SmartBuffer $~lib/array/Array<~lib/typedarray/Uint8Array> $~lib/array/Array<i32> $invalid
+            br_table $~lib/object/Object $~lib/arraybuffer/ArrayBuffer $~lib/string/String $folding-inner2 $folding-inner2 $~lib/array/Array<~lib/typedarray/Uint8Array> $assembly/smartBuffer/SmartBuffer $~lib/array/Array<i32> $invalid
            end
            return
           end
@@ -1702,63 +1704,63 @@
          end
          return
         end
+        global.get $~lib/memory/__stack_pointer
+        i32.const 4
+        i32.sub
+        global.set $~lib/memory/__stack_pointer
+        global.get $~lib/memory/__stack_pointer
+        i32.const 1828
+        i32.lt_s
+        br_if $folding-inner0
+        global.get $~lib/memory/__stack_pointer
+        local.tee $2
+        i32.const 0
+        i32.store $0
+        local.get $2
+        local.get $0
+        i32.store $0
         local.get $0
         i32.load $0 offset=4
-        local.tee $0
-        if
-         local.get $0
-         call $byn-split-outlined-A$~lib/rt/itcms/__visit
+        local.set $1
+        local.get $2
+        local.get $0
+        i32.store $0
+        local.get $1
+        local.get $0
+        i32.load $0 offset=12
+        i32.const 2
+        i32.shl
+        i32.add
+        local.set $2
+        loop $while-continue|0
+         local.get $1
+         local.get $2
+         i32.lt_u
+         if
+          local.get $1
+          i32.load $0
+          local.tee $3
+          if
+           local.get $3
+           call $byn-split-outlined-A$~lib/rt/itcms/__visit
+          end
+          local.get $1
+          i32.const 4
+          i32.add
+          local.set $1
+          br $while-continue|0
+         end
         end
-        return
+        br $folding-inner1
        end
-       global.get $~lib/memory/__stack_pointer
-       i32.const 4
-       i32.sub
-       global.set $~lib/memory/__stack_pointer
-       global.get $~lib/memory/__stack_pointer
-       i32.const 1828
-       i32.lt_s
-       br_if $folding-inner0
-       global.get $~lib/memory/__stack_pointer
-       local.tee $2
-       i32.const 0
-       i32.store $0
-       local.get $2
-       local.get $0
-       i32.store $0
        local.get $0
        i32.load $0 offset=4
-       local.set $1
-       local.get $2
-       local.get $0
-       i32.store $0
-       local.get $1
-       local.get $0
-       i32.load $0 offset=12
-       i32.const 2
-       i32.shl
-       i32.add
-       local.set $2
-       loop $while-continue|0
-        local.get $1
-        local.get $2
-        i32.lt_u
-        if
-         local.get $1
-         i32.load $0
-         local.tee $3
-         if
-          local.get $3
-          call $byn-split-outlined-A$~lib/rt/itcms/__visit
-         end
-         local.get $1
-         i32.const 4
-         i32.add
-         local.set $1
-         br $while-continue|0
-        end
+       local.tee $0
+       if
+        local.get $0
+        call $byn-split-outlined-A$~lib/rt/itcms/__visit
        end
-       br $folding-inner1
+       return
       end
       global.get $~lib/memory/__stack_pointer
       i32.const 4
@@ -1840,40 +1842,7 @@
   i32.const 1344
   global.set $~lib/rt/itcms/fromSpace
  )
- (func $~lib/typedarray/Uint8Array#get:length (param $0 i32) (result i32)
-  (local $1 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 4
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1828
-  i32.lt_s
-  if
-   i32.const 34624
-   i32.const 34672
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $1
-  i32.const 0
-  i32.store $0
-  local.get $1
-  local.get $0
-  i32.store $0
-  local.get $0
-  i32.load $0 offset=8
-  local.set $0
-  local.get $1
-  i32.const 4
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
- (func $assembly/index/SmartBuffer#constructor (param $0 i32) (result i32)
+ (func $assembly/smartBuffer/SmartBuffer#constructor (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
@@ -1900,7 +1869,7 @@
   i32.store $0 offset=8
   local.get $1
   i32.const 8
-  i32.const 5
+  i32.const 6
   call $~lib/rt/itcms/__new
   local.tee $1
   i32.store $0
@@ -1933,6 +1902,149 @@
   i32.add
   global.set $~lib/memory/__stack_pointer
   local.get $1
+ )
+ (func $~lib/typedarray/Uint8Array#__get (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1828
+  i32.lt_s
+  if
+   i32.const 34624
+   i32.const 34672
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $2
+  i32.const 0
+  i32.store $0
+  local.get $2
+  local.get $0
+  i32.store $0
+  local.get $1
+  local.get $0
+  i32.load $0 offset=8
+  i32.ge_u
+  if
+   i32.const 1248
+   i32.const 1456
+   i32.const 167
+   i32.const 45
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $2
+  local.get $0
+  i32.store $0
+  local.get $1
+  local.get $0
+  i32.load $0 offset=4
+  i32.add
+  i32.load8_u $0
+  local.set $0
+  local.get $2
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $0
+ )
+ (func $assembly/smartBuffer/SmartBuffer#readUint8 (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1828
+  i32.lt_s
+  if
+   i32.const 34624
+   i32.const 34672
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $2
+  i64.const 0
+  i64.store $0
+  local.get $2
+  i32.const 0
+  i32.store $0 offset=8
+  local.get $2
+  local.get $0
+  i32.store $0 offset=4
+  local.get $2
+  local.get $0
+  i32.load $0 offset=4
+  local.tee $1
+  i32.store $0
+  local.get $2
+  local.get $0
+  i32.store $0 offset=4
+  local.get $2
+  local.get $0
+  i32.store $0 offset=8
+  local.get $0
+  local.get $0
+  i32.load $0
+  local.tee $0
+  i32.const 1
+  i32.add
+  i32.store $0
+  local.get $1
+  local.get $0
+  call $~lib/typedarray/Uint8Array#__get
+  i32.const 255
+  i32.and
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $0
+ )
+ (func $~lib/typedarray/Uint8Array#get:length (param $0 i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1828
+  i32.lt_s
+  if
+   i32.const 34624
+   i32.const 34672
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  i32.const 0
+  i32.store $0
+  local.get $1
+  local.get $0
+  i32.store $0
+  local.get $0
+  i32.load $0 offset=8
+  local.set $0
+  local.get $1
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $0
  )
  (func $~lib/typedarray/Uint8Array#constructor (param $0 i32) (result i32)
   (local $1 i32)
@@ -2010,8 +2122,8 @@
    i32.const 1073741820
    i32.gt_u
    if
-    i32.const 1456
-    i32.const 1504
+    i32.const 1520
+    i32.const 1568
     i32.const 19
     i32.const 57
     call $~lib/builtins/abort
@@ -2073,10 +2185,12 @@
   call $~lib/builtins/abort
   unreachable
  )
- (func $~lib/typedarray/Uint8Array#__set (param $0 i32) (param $1 i32) (param $2 i32)
+ (func $~lib/typedarray/Uint8Array#slice (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
   (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 4
+  i32.const 12
   i32.sub
   global.set $~lib/memory/__stack_pointer
   global.get $~lib/memory/__stack_pointer
@@ -2092,521 +2206,100 @@
   end
   global.get $~lib/memory/__stack_pointer
   local.tee $3
+  i64.const 0
+  i64.store $0
+  local.get $3
   i32.const 0
-  i32.store $0
+  i32.store $0 offset=8
   local.get $3
   local.get $0
   i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0 offset=4
+  local.get $0
+  call $~lib/typedarray/Uint8Array#get:length
+  local.set $3
   local.get $1
-  local.get $0
-  i32.load $0 offset=8
-  i32.ge_u
-  if
-   i32.const 1248
-   i32.const 1568
-   i32.const 178
-   i32.const 45
-   call $~lib/builtins/abort
-   unreachable
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $1
+   local.get $3
+   i32.add
+   local.tee $1
+   i32.const 0
+   local.get $1
+   i32.const 0
+   i32.gt_s
+   select
+  else
+   local.get $1
+   local.get $3
+   local.get $1
+   local.get $3
+   i32.lt_s
+   select
   end
+  local.set $1
   global.get $~lib/memory/__stack_pointer
+  local.get $2
+  i32.const 0
+  i32.lt_s
+  if (result i32)
+   local.get $2
+   local.get $3
+   i32.add
+   local.tee $2
+   i32.const 0
+   local.get $2
+   i32.const 0
+   i32.gt_s
+   select
+  else
+   local.get $2
+   local.get $3
+   local.get $2
+   local.get $3
+   i32.lt_s
+   select
+  end
+  local.get $1
+  i32.sub
+  local.tee $2
+  i32.const 0
+  local.get $2
+  i32.const 0
+  i32.gt_s
+  select
   local.tee $3
+  call $~lib/typedarray/Uint8Array#constructor
+  local.tee $4
+  i32.store $0 offset=8
+  global.get $~lib/memory/__stack_pointer
+  local.tee $2
+  local.get $4
+  i32.store $0 offset=4
+  local.get $4
+  i32.load $0 offset=4
+  local.set $5
+  local.get $2
   local.get $0
-  i32.store $0
+  i32.store $0 offset=4
+  local.get $5
   local.get $1
   local.get $0
   i32.load $0 offset=4
   i32.add
-  local.get $2
-  i32.store8 $0
   local.get $3
-  i32.const 4
+  memory.copy $0 $0
+  local.get $2
+  i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
+  local.get $4
  )
- (func $assembly/index/SmartBuffer#writeBytes (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 12
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  block $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1828
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $3
-   i64.const 0
-   i64.store $0
-   local.get $3
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $3
-   local.get $0
-   i32.store $0 offset=8
-   local.get $3
-   local.get $0
-   i32.load $0 offset=4
-   local.tee $2
-   i32.store $0
-   local.get $3
-   local.get $1
-   i32.store $0 offset=4
-   local.get $3
-   local.get $0
-   i32.store $0 offset=8
-   local.get $0
-   i32.load $0
-   local.set $4
-   local.get $3
-   i32.const 12
-   i32.sub
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1828
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $3
-   i64.const 0
-   i64.store $0
-   local.get $3
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $3
-   local.get $2
-   i32.store $0
-   local.get $3
-   local.get $1
-   i32.store $0 offset=4
-   local.get $3
-   local.get $1
-   i32.store $0 offset=8
-   local.get $1
-   call $~lib/typedarray/Uint8Array#get:length
-   local.set $5
-   local.get $4
-   i32.const 0
-   i32.lt_s
-   if (result i32)
-    i32.const 1
-   else
-    global.get $~lib/memory/__stack_pointer
-    local.get $2
-    i32.store $0 offset=8
-    local.get $2
-    call $~lib/typedarray/Uint8Array#get:length
-    local.get $4
-    local.get $5
-    i32.add
-    i32.lt_s
-   end
-   if
-    i32.const 1248
-    i32.const 1568
-    i32.const 1902
-    i32.const 5
-    call $~lib/builtins/abort
-    unreachable
-   end
-   global.get $~lib/memory/__stack_pointer
-   local.tee $3
-   local.get $2
-   i32.store $0 offset=8
-   local.get $4
-   local.get $2
-   i32.load $0 offset=4
-   i32.add
-   local.set $2
-   local.get $3
-   local.get $1
-   i32.store $0 offset=8
-   local.get $2
-   local.get $1
-   i32.load $0 offset=4
-   local.get $5
-   memory.copy $0 $0
-   local.get $3
-   i32.const 12
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store $0 offset=4
-   local.get $0
-   i32.load $0
-   local.set $2
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store $0 offset=4
-   local.get $0
-   local.get $1
-   call $~lib/typedarray/Uint8Array#get:length
-   local.get $2
-   i32.add
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   return
-  end
-  i32.const 34624
-  i32.const 34672
-  i32.const 1
-  i32.const 1
-  call $~lib/builtins/abort
-  unreachable
- )
- (func $assembly/index/SmartBuffer#writeBytes16Length (param $0 i32) (param $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 8
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  block $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1828
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $2
-   i64.const 0
-   i64.store $0
-   local.get $2
-   local.get $0
-   i32.store $0
-   local.get $2
-   local.get $1
-   i32.store $0 offset=4
-   local.get $1
-   call $~lib/typedarray/Uint8Array#get:length
-   local.set $2
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.sub
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1828
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $3
-   i64.const 0
-   i64.store $0
-   local.get $3
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $3
-   local.get $0
-   i32.store $0 offset=4
-   local.get $3
-   local.get $0
-   i32.load $0 offset=4
-   local.tee $4
-   i32.store $0
-   local.get $3
-   local.get $0
-   i32.store $0 offset=4
-   local.get $3
-   local.get $0
-   i32.store $0 offset=8
-   local.get $0
-   local.get $0
-   i32.load $0
-   local.tee $3
-   i32.const 1
-   i32.add
-   i32.store $0
-   local.get $4
-   local.get $3
-   local.get $2
-   i32.const 8
-   i32.shr_s
-   i32.const 255
-   i32.and
-   call $~lib/typedarray/Uint8Array#__set
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store $0 offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.load $0 offset=4
-   local.tee $3
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store $0 offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store $0 offset=8
-   local.get $0
-   local.get $0
-   i32.load $0
-   local.tee $4
-   i32.const 1
-   i32.add
-   i32.store $0
-   local.get $3
-   local.get $4
-   local.get $2
-   i32.const 255
-   i32.and
-   call $~lib/typedarray/Uint8Array#__set
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store $0 offset=4
-   local.get $0
-   local.get $1
-   call $assembly/index/SmartBuffer#writeBytes
-   global.get $~lib/memory/__stack_pointer
-   i32.const 8
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   return
-  end
-  i32.const 34624
-  i32.const 34672
-  i32.const 1
-  i32.const 1
-  call $~lib/builtins/abort
-  unreachable
- )
- (func $assembly/index/MessageContentV1Pack (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 12
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  block $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1828
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $5
-   i64.const 0
-   i64.store $0
-   local.get $5
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $5
-   local.get $0
-   i32.store $0
-   local.get $0
-   call $~lib/typedarray/Uint8Array#get:length
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store $0
-   local.get $1
-   call $~lib/typedarray/Uint8Array#get:length
-   local.get $6
-   i32.add
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $2
-   i32.store $0
-   local.get $2
-   call $~lib/typedarray/Uint8Array#get:length
-   local.get $6
-   i32.add
-   i32.const 9
-   i32.add
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $3
-   i32.store $0
-   local.get $3
-   call $~lib/typedarray/Uint8Array#get:length
-   local.get $6
-   i32.add
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $4
-   i32.store $0
-   local.get $4
-   call $~lib/typedarray/Uint8Array#get:length
-   local.get $6
-   i32.add
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.sub
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1828
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 0
-   i32.store $0
-   local.get $6
-   call $~lib/typedarray/Uint8Array#constructor
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store $0
-   local.get $6
-   call $assembly/index/SmartBuffer#constructor
-   local.set $6
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   local.get $5
-   local.get $6
-   i32.store $0 offset=4
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.sub
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1828
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $7
-   i64.const 0
-   i64.store $0
-   local.get $7
-   i32.const 0
-   i32.store $0 offset=8
-   local.get $7
-   local.get $6
-   i32.store $0 offset=4
-   local.get $7
-   local.get $6
-   i32.load $0 offset=4
-   local.tee $5
-   i32.store $0
-   local.get $7
-   local.get $6
-   i32.store $0 offset=4
-   local.get $7
-   local.get $6
-   i32.store $0 offset=8
-   local.get $6
-   local.get $6
-   i32.load $0
-   local.tee $7
-   i32.const 1
-   i32.add
-   i32.store $0
-   local.get $5
-   local.get $7
-   i32.const 1
-   call $~lib/typedarray/Uint8Array#__set
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $0
-   i32.store $0 offset=8
-   local.get $6
-   local.get $0
-   call $assembly/index/SmartBuffer#writeBytes16Length
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $1
-   i32.store $0 offset=8
-   local.get $6
-   local.get $1
-   call $assembly/index/SmartBuffer#writeBytes16Length
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $2
-   i32.store $0 offset=8
-   local.get $6
-   local.get $2
-   call $assembly/index/SmartBuffer#writeBytes16Length
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $3
-   i32.store $0 offset=8
-   local.get $6
-   local.get $3
-   call $assembly/index/SmartBuffer#writeBytes16Length
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   local.get $4
-   i32.store $0 offset=8
-   local.get $6
-   local.get $4
-   call $assembly/index/SmartBuffer#writeBytes
-   global.get $~lib/memory/__stack_pointer
-   local.get $6
-   i32.store $0
-   global.get $~lib/memory/__stack_pointer
-   i32.const 4
-   i32.sub
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 1828
-   i32.lt_s
-   br_if $folding-inner0
-   global.get $~lib/memory/__stack_pointer
-   local.tee $0
-   i32.const 0
-   i32.store $0
-   local.get $0
-   local.get $6
-   i32.store $0
-   local.get $6
-   i32.load $0 offset=4
-   local.set $1
-   local.get $0
-   i32.const 4
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   global.get $~lib/memory/__stack_pointer
-   i32.const 12
-   i32.add
-   global.set $~lib/memory/__stack_pointer
-   local.get $1
-   return
-  end
-  i32.const 34624
-  i32.const 34672
-  i32.const 1
-  i32.const 1
-  call $~lib/builtins/abort
-  unreachable
- )
- (func $~lib/typedarray/Uint8Array#__get (param $0 i32) (param $1 i32) (result i32)
+ (func $~lib/typedarray/Uint8Array#slice@varargs (param $0 i32) (param $1 i32) (result i32)
   (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
@@ -2624,35 +2317,32 @@
    unreachable
   end
   global.get $~lib/memory/__stack_pointer
-  local.tee $2
   i32.const 0
   i32.store $0
-  local.get $2
-  local.get $0
-  i32.store $0
-  local.get $1
-  local.get $0
-  i32.load $0 offset=8
-  i32.ge_u
-  if
-   i32.const 1248
-   i32.const 1568
-   i32.const 167
-   i32.const 45
-   call $~lib/builtins/abort
-   unreachable
+  block $2of2
+   block $1of2
+    block $0of2
+     block $outOfRange
+      global.get $~argumentsLength
+      br_table $0of2 $1of2 $2of2 $outOfRange
+     end
+     unreachable
+    end
+    i32.const 0
+    local.set $1
+   end
+   i32.const 2147483647
+   local.set $2
   end
   global.get $~lib/memory/__stack_pointer
-  local.tee $2
   local.get $0
   i32.store $0
-  local.get $1
   local.get $0
-  i32.load $0 offset=4
-  i32.add
-  i32.load8_u $0
+  local.get $1
+  local.get $2
+  call $~lib/typedarray/Uint8Array#slice
   local.set $0
-  local.get $2
+  global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
@@ -2728,7 +2418,7 @@
      i32.const 268435455
      i32.gt_u
      if
-      i32.const 1456
+      i32.const 1520
       i32.const 1632
       i32.const 19
       i32.const 48
@@ -2863,10 +2553,94 @@
   call $~lib/builtins/abort
   unreachable
  )
- (func $~lib/typedarray/Uint8Array#slice (param $0 i32) (param $1 i32) (param $2 i32) (result i32)
+ (func $assembly/smartBuffer/SmartBuffer.ofSize (param $0 i32) (result i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1828
+  i32.lt_s
+  if
+   i32.const 34624
+   i32.const 34672
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  i32.const 0
+  i32.store $0
+  local.get $0
+  call $~lib/typedarray/Uint8Array#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  local.get $0
+  i32.store $0
+  local.get $0
+  call $assembly/smartBuffer/SmartBuffer#constructor
+  local.set $0
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $0
+ )
+ (func $~lib/typedarray/Uint8Array#__set (param $0 i32) (param $1 i32) (param $2 i32)
   (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1828
+  i32.lt_s
+  if
+   i32.const 34624
+   i32.const 34672
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $3
+  i32.const 0
+  i32.store $0
+  local.get $3
+  local.get $0
+  i32.store $0
+  local.get $1
+  local.get $0
+  i32.load $0 offset=8
+  i32.ge_u
+  if
+   i32.const 1248
+   i32.const 1456
+   i32.const 178
+   i32.const 45
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $3
+  local.get $0
+  i32.store $0
+  local.get $1
+  local.get $0
+  i32.load $0 offset=4
+  i32.add
+  local.get $2
+  i32.store8 $0
+  local.get $3
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+ )
+ (func $assembly/smartBuffer/SmartBuffer#writeUint8 (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.sub
@@ -2891,93 +2665,334 @@
   i32.store $0 offset=8
   local.get $3
   local.get $0
+  i32.store $0 offset=4
+  local.get $3
+  local.get $0
+  i32.load $0 offset=4
+  local.tee $2
   i32.store $0
   local.get $3
   local.get $0
   i32.store $0 offset=4
-  local.get $0
-  call $~lib/typedarray/Uint8Array#get:length
-  local.set $3
-  local.get $1
-  i32.const 0
-  i32.lt_s
-  if (result i32)
-   local.get $1
-   local.get $3
-   i32.add
-   local.tee $1
-   i32.const 0
-   local.get $1
-   i32.const 0
-   i32.gt_s
-   select
-  else
-   local.get $1
-   local.get $3
-   local.get $1
-   local.get $3
-   i32.lt_s
-   select
-  end
-  local.set $1
-  global.get $~lib/memory/__stack_pointer
-  local.get $2
-  i32.const 0
-  i32.lt_s
-  if (result i32)
-   local.get $2
-   local.get $3
-   i32.add
-   local.tee $2
-   i32.const 0
-   local.get $2
-   i32.const 0
-   i32.gt_s
-   select
-  else
-   local.get $2
-   local.get $3
-   local.get $2
-   local.get $3
-   i32.lt_s
-   select
-  end
-  local.get $1
-  i32.sub
-  local.tee $2
-  i32.const 0
-  local.get $2
-  i32.const 0
-  i32.gt_s
-  select
-  local.tee $3
-  call $~lib/typedarray/Uint8Array#constructor
-  local.tee $4
-  i32.store $0 offset=8
-  global.get $~lib/memory/__stack_pointer
-  local.tee $2
-  local.get $4
-  i32.store $0 offset=4
-  local.get $4
-  i32.load $0 offset=4
-  local.set $5
-  local.get $2
-  local.get $0
-  i32.store $0 offset=4
-  local.get $5
-  local.get $1
-  local.get $0
-  i32.load $0 offset=4
-  i32.add
   local.get $3
-  memory.copy $0 $0
+  local.get $0
+  i32.store $0 offset=8
+  local.get $0
+  local.get $0
+  i32.load $0
+  local.tee $0
+  i32.const 1
+  i32.add
+  i32.store $0
   local.get $2
+  local.get $0
+  local.get $1
+  i32.const 255
+  i32.and
+  call $~lib/typedarray/Uint8Array#__set
+  global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $4
  )
- (func $assembly/index/SmartBuffer#readBytes16Length (param $0 i32) (result i32)
+ (func $assembly/smartBuffer/SmartBuffer#writeBytes (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 12
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  block $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   local.tee $3
+   i64.const 0
+   i64.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $3
+   local.get $0
+   i32.store $0 offset=8
+   local.get $3
+   local.get $0
+   i32.load $0 offset=4
+   local.tee $2
+   i32.store $0
+   local.get $3
+   local.get $1
+   i32.store $0 offset=4
+   local.get $3
+   local.get $0
+   i32.store $0 offset=8
+   local.get $0
+   i32.load $0
+   local.set $4
+   local.get $3
+   i32.const 12
+   i32.sub
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   local.tee $3
+   i64.const 0
+   i64.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $3
+   local.get $2
+   i32.store $0
+   local.get $3
+   local.get $1
+   i32.store $0 offset=4
+   local.get $3
+   local.get $1
+   i32.store $0 offset=8
+   local.get $1
+   call $~lib/typedarray/Uint8Array#get:length
+   local.set $5
+   local.get $4
+   i32.const 0
+   i32.lt_s
+   if (result i32)
+    i32.const 1
+   else
+    global.get $~lib/memory/__stack_pointer
+    local.get $2
+    i32.store $0 offset=8
+    local.get $2
+    call $~lib/typedarray/Uint8Array#get:length
+    local.get $4
+    local.get $5
+    i32.add
+    i32.lt_s
+   end
+   if
+    i32.const 1248
+    i32.const 1456
+    i32.const 1902
+    i32.const 5
+    call $~lib/builtins/abort
+    unreachable
+   end
+   global.get $~lib/memory/__stack_pointer
+   local.tee $3
+   local.get $2
+   i32.store $0 offset=8
+   local.get $4
+   local.get $2
+   i32.load $0 offset=4
+   i32.add
+   local.set $2
+   local.get $3
+   local.get $1
+   i32.store $0 offset=8
+   local.get $2
+   local.get $1
+   i32.load $0 offset=4
+   local.get $5
+   memory.copy $0 $0
+   local.get $3
+   i32.const 12
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0 offset=4
+   local.get $0
+   i32.load $0
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store $0 offset=4
+   local.get $0
+   local.get $1
+   call $~lib/typedarray/Uint8Array#get:length
+   local.get $2
+   i32.add
+   i32.store $0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   return
+  end
+  i32.const 34624
+  i32.const 34672
+  i32.const 1
+  i32.const 1
+  call $~lib/builtins/abort
+  unreachable
+ )
+ (func $assembly/smartBuffer/SmartBuffer#get:bytes (param $0 i32) (result i32)
+  (local $1 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 4
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  global.get $~lib/memory/__stack_pointer
+  i32.const 1828
+  i32.lt_s
+  if
+   i32.const 34624
+   i32.const 34672
+   i32.const 1
+   i32.const 1
+   call $~lib/builtins/abort
+   unreachable
+  end
+  global.get $~lib/memory/__stack_pointer
+  local.tee $1
+  i32.const 0
+  i32.store $0
+  local.get $1
+  local.get $0
+  i32.store $0
+  local.get $0
+  i32.load $0 offset=4
+  local.set $0
+  local.get $1
+  i32.const 4
+  i32.add
+  global.set $~lib/memory/__stack_pointer
+  local.get $0
+ )
+ (func $assembly/smartBuffer/SmartBuffer#writeBytes16Length (param $0 i32) (param $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  global.get $~lib/memory/__stack_pointer
+  i32.const 8
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  block $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   local.tee $2
+   i64.const 0
+   i64.store $0
+   local.get $2
+   local.get $0
+   i32.store $0
+   local.get $2
+   local.get $1
+   i32.store $0 offset=4
+   local.get $1
+   call $~lib/typedarray/Uint8Array#get:length
+   local.set $2
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.sub
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   local.tee $3
+   i64.const 0
+   i64.store $0
+   local.get $3
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $3
+   local.get $0
+   i32.store $0 offset=4
+   local.get $3
+   local.get $0
+   i32.load $0 offset=4
+   local.tee $4
+   i32.store $0
+   local.get $3
+   local.get $0
+   i32.store $0 offset=4
+   local.get $3
+   local.get $0
+   i32.store $0 offset=8
+   local.get $0
+   local.get $0
+   i32.load $0
+   local.tee $3
+   i32.const 1
+   i32.add
+   i32.store $0
+   local.get $4
+   local.get $3
+   local.get $2
+   i32.const 8
+   i32.shr_s
+   i32.const 255
+   i32.and
+   call $~lib/typedarray/Uint8Array#__set
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0 offset=4
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.load $0 offset=4
+   local.tee $3
+   i32.store $0
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0 offset=4
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0 offset=8
+   local.get $0
+   local.get $0
+   i32.load $0
+   local.tee $4
+   i32.const 1
+   i32.add
+   i32.store $0
+   local.get $3
+   local.get $4
+   local.get $2
+   i32.const 255
+   i32.and
+   call $~lib/typedarray/Uint8Array#__set
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0
+   global.get $~lib/memory/__stack_pointer
+   local.get $1
+   i32.store $0 offset=4
+   local.get $0
+   local.get $1
+   call $assembly/smartBuffer/SmartBuffer#writeBytes
+   global.get $~lib/memory/__stack_pointer
+   i32.const 8
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   return
+  end
+  i32.const 34624
+  i32.const 34672
+  i32.const 1
+  i32.const 1
+  call $~lib/builtins/abort
+  unreachable
+ )
+ (func $assembly/smartBuffer/SmartBuffer#readBytes16Length (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
   (local $3 i32)
@@ -3146,265 +3161,6 @@
   call $~lib/builtins/abort
   unreachable
  )
- (func $assembly/index/MessageContentV1Unpack (param $0 i32) (result i32)
-  (local $1 i32)
-  (local $2 i32)
-  (local $3 i32)
-  (local $4 i32)
-  (local $5 i32)
-  (local $6 i32)
-  (local $7 i32)
-  global.get $~lib/memory/__stack_pointer
-  i32.const 48
-  i32.sub
-  global.set $~lib/memory/__stack_pointer
-  block $folding-inner1
-   block $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    i32.const 1828
-    i32.lt_s
-    br_if $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    local.tee $1
-    i32.const 0
-    i32.const 48
-    memory.fill $0
-    local.get $1
-    local.get $0
-    i32.store $0
-    local.get $1
-    local.get $0
-    call $assembly/index/SmartBuffer#constructor
-    local.tee $5
-    i32.store $0 offset=4
-    global.get $~lib/memory/__stack_pointer
-    local.get $5
-    i32.store $0 offset=8
-    global.get $~lib/memory/__stack_pointer
-    i32.const 12
-    i32.sub
-    global.set $~lib/memory/__stack_pointer
-    global.get $~lib/memory/__stack_pointer
-    i32.const 1828
-    i32.lt_s
-    br_if $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    local.tee $1
-    i64.const 0
-    i64.store $0
-    local.get $1
-    i32.const 0
-    i32.store $0 offset=8
-    local.get $1
-    local.get $5
-    i32.store $0 offset=4
-    local.get $1
-    local.get $5
-    i32.load $0 offset=4
-    local.tee $3
-    i32.store $0
-    local.get $1
-    local.get $5
-    i32.store $0 offset=4
-    local.get $1
-    local.get $5
-    i32.store $0 offset=8
-    local.get $5
-    local.get $5
-    i32.load $0
-    local.tee $1
-    i32.const 1
-    i32.add
-    i32.store $0
-    local.get $3
-    local.get $1
-    call $~lib/typedarray/Uint8Array#__get
-    i32.const 255
-    i32.and
-    local.set $1
-    global.get $~lib/memory/__stack_pointer
-    i32.const 12
-    i32.add
-    global.set $~lib/memory/__stack_pointer
-    local.get $1
-    i32.const 1
-    i32.ne
-    if
-     global.get $~lib/memory/__stack_pointer
-     i32.const 1
-     call $~lib/rt/__newArray
-     local.tee $0
-     i32.store $0 offset=12
-     global.get $~lib/memory/__stack_pointer
-     local.get $0
-     i32.load $0 offset=4
-     i32.store $0 offset=16
-     local.get $0
-     i32.const 0
-     i32.const 0
-     call $~lib/typedarray/Uint8Array#constructor
-     call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-     br $folding-inner1
-    end
-    global.get $~lib/memory/__stack_pointer
-    local.tee $3
-    local.get $5
-    i32.store $0 offset=8
-    local.get $3
-    local.get $5
-    call $assembly/index/SmartBuffer#readBytes16Length
-    local.tee $3
-    i32.store $0 offset=20
-    global.get $~lib/memory/__stack_pointer
-    local.get $5
-    i32.store $0 offset=8
-    global.get $~lib/memory/__stack_pointer
-    local.get $5
-    call $assembly/index/SmartBuffer#readBytes16Length
-    local.tee $4
-    i32.store $0 offset=24
-    global.get $~lib/memory/__stack_pointer
-    local.get $5
-    i32.store $0 offset=8
-    global.get $~lib/memory/__stack_pointer
-    local.get $5
-    call $assembly/index/SmartBuffer#readBytes16Length
-    local.tee $6
-    i32.store $0 offset=28
-    global.get $~lib/memory/__stack_pointer
-    local.get $5
-    i32.store $0 offset=8
-    global.get $~lib/memory/__stack_pointer
-    local.get $5
-    call $assembly/index/SmartBuffer#readBytes16Length
-    local.tee $5
-    i32.store $0 offset=32
-    global.get $~lib/memory/__stack_pointer
-    local.set $7
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store $0 offset=8
-    global.get $~lib/memory/__stack_pointer
-    local.get $3
-    i32.store $0
-    local.get $3
-    call $~lib/typedarray/Uint8Array#get:length
-    local.get $1
-    i32.add
-    local.set $1
-    global.get $~lib/memory/__stack_pointer
-    local.get $4
-    i32.store $0
-    local.get $4
-    call $~lib/typedarray/Uint8Array#get:length
-    local.get $1
-    i32.add
-    local.set $1
-    global.get $~lib/memory/__stack_pointer
-    local.get $6
-    i32.store $0
-    local.get $6
-    call $~lib/typedarray/Uint8Array#get:length
-    local.get $1
-    i32.add
-    i32.const 8
-    i32.add
-    local.set $1
-    global.get $~lib/memory/__stack_pointer
-    local.get $5
-    i32.store $0
-    local.get $5
-    call $~lib/typedarray/Uint8Array#get:length
-    local.get $1
-    i32.add
-    local.set $1
-    i32.const 1
-    global.set $~argumentsLength
-    global.get $~lib/memory/__stack_pointer
-    i32.const 4
-    i32.sub
-    global.set $~lib/memory/__stack_pointer
-    global.get $~lib/memory/__stack_pointer
-    i32.const 1828
-    i32.lt_s
-    br_if $folding-inner0
-    global.get $~lib/memory/__stack_pointer
-    i32.const 0
-    i32.store $0
-    block $2of2
-     block $1of2
-      block $0of2
-       block $outOfRange
-        global.get $~argumentsLength
-        br_table $0of2 $1of2 $2of2 $outOfRange
-       end
-       unreachable
-      end
-      i32.const 0
-      local.set $1
-     end
-     i32.const 2147483647
-     local.set $2
-    end
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.store $0
-    local.get $0
-    local.get $1
-    local.get $2
-    call $~lib/typedarray/Uint8Array#slice
-    local.set $1
-    global.get $~lib/memory/__stack_pointer
-    i32.const 4
-    i32.add
-    global.set $~lib/memory/__stack_pointer
-    local.get $7
-    local.get $1
-    i32.store $0 offset=36
-    global.get $~lib/memory/__stack_pointer
-    i32.const 5
-    call $~lib/rt/__newArray
-    local.tee $0
-    i32.store $0 offset=40
-    global.get $~lib/memory/__stack_pointer
-    local.get $0
-    i32.load $0 offset=4
-    i32.store $0 offset=44
-    local.get $0
-    i32.const 0
-    local.get $3
-    call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-    local.get $0
-    i32.const 1
-    local.get $4
-    call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-    local.get $0
-    i32.const 2
-    local.get $6
-    call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-    local.get $0
-    i32.const 3
-    local.get $5
-    call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-    local.get $0
-    i32.const 4
-    local.get $1
-    call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-    br $folding-inner1
-   end
-   i32.const 34624
-   i32.const 34672
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
-  end
-  global.get $~lib/memory/__stack_pointer
-  i32.const 48
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
- )
  (func $~lib/rt/__newArray (param $0 i32) (result i32)
   (local $1 i32)
   (local $2 i32)
@@ -3438,7 +3194,7 @@
   local.tee $3
   i32.store $0
   i32.const 16
-  i32.const 6
+  i32.const 5
   call $~lib/rt/itcms/__new
   local.tee $2
   local.get $3
@@ -3465,79 +3221,688 @@
   global.set $~lib/memory/__stack_pointer
   local.get $2
  )
- (func $export:assembly/index/MessageContentV1Pack (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
-  (local $5 i32)
+ (func $export:assembly/containerContent/ContainerUnpack (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
   global.get $~lib/memory/__stack_pointer
-  i32.const 20
+  i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1828
-  i32.lt_s
-  if
-   i32.const 34624
-   i32.const 34672
-   i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
+  block $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   local.tee $1
+   local.get $0
+   i32.store $0
+   block $__inlined_func$assembly/containerContent/ContainerUnpack (result i32)
+    local.get $1
+    i32.const 20
+    i32.sub
+    global.set $~lib/memory/__stack_pointer
+    block $folding-inner0
+     global.get $~lib/memory/__stack_pointer
+     i32.const 1828
+     i32.lt_s
+     br_if $folding-inner0
+     global.get $~lib/memory/__stack_pointer
+     local.tee $1
+     i32.const 0
+     i32.const 20
+     memory.fill $0
+     local.get $1
+     local.get $0
+     i32.store $0
+     local.get $1
+     local.get $0
+     call $assembly/smartBuffer/SmartBuffer#constructor
+     local.tee $1
+     i32.store $0 offset=4
+     global.get $~lib/memory/__stack_pointer
+     local.get $1
+     i32.store $0 offset=8
+     local.get $1
+     call $assembly/smartBuffer/SmartBuffer#readUint8
+     local.tee $2
+     i32.const 1
+     i32.eq
+     if
+      global.get $~lib/memory/__stack_pointer
+      local.tee $3
+      local.get $1
+      i32.store $0 offset=8
+      local.get $3
+      local.get $0
+      i32.store $0
+      local.get $3
+      i32.const 16
+      i32.sub
+      global.set $~lib/memory/__stack_pointer
+      global.get $~lib/memory/__stack_pointer
+      i32.const 1828
+      i32.lt_s
+      br_if $folding-inner0
+      global.get $~lib/memory/__stack_pointer
+      local.tee $3
+      i64.const 0
+      i64.store $0
+      local.get $3
+      i64.const 0
+      i64.store $0 offset=8
+      local.get $3
+      local.get $1
+      i32.store $0
+      local.get $1
+      call $assembly/smartBuffer/SmartBuffer#readUint8
+      local.set $1
+      global.get $~lib/memory/__stack_pointer
+      local.get $0
+      i32.store $0
+      i32.const 1
+      global.set $~argumentsLength
+      global.get $~lib/memory/__stack_pointer
+      local.get $0
+      local.get $2
+      i32.const 7
+      i32.add
+      call $~lib/typedarray/Uint8Array#slice@varargs
+      local.tee $0
+      i32.store $0 offset=4
+      global.get $~lib/memory/__stack_pointer
+      i32.const 2
+      call $~lib/rt/__newArray
+      local.tee $2
+      i32.store $0 offset=8
+      global.get $~lib/memory/__stack_pointer
+      local.get $2
+      i32.load $0 offset=4
+      i32.store $0 offset=12
+      local.get $2
+      i32.const 0
+      local.get $1
+      call $~lib/typedarray/Uint8Array#constructor
+      call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+      local.get $2
+      i32.const 1
+      local.get $0
+      call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+      global.get $~lib/memory/__stack_pointer
+      i32.const 16
+      i32.add
+      global.set $~lib/memory/__stack_pointer
+      global.get $~lib/memory/__stack_pointer
+      i32.const 20
+      i32.add
+      global.set $~lib/memory/__stack_pointer
+      local.get $2
+      br $__inlined_func$assembly/containerContent/ContainerUnpack
+     end
+     global.get $~lib/memory/__stack_pointer
+     i32.const 1
+     call $~lib/rt/__newArray
+     local.tee $0
+     i32.store $0 offset=12
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.load $0 offset=4
+     i32.store $0 offset=16
+     local.get $0
+     i32.const 0
+     i32.const 0
+     call $~lib/typedarray/Uint8Array#constructor
+     call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+     global.get $~lib/memory/__stack_pointer
+     i32.const 20
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     local.get $0
+     br $__inlined_func$assembly/containerContent/ContainerUnpack
+    end
+    br $folding-inner1
+   end
+   local.set $0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $0
+   return
   end
-  global.get $~lib/memory/__stack_pointer
-  local.tee $5
-  local.get $0
-  i32.store $0
-  local.get $5
-  local.get $1
-  i32.store $0 offset=4
-  local.get $5
-  local.get $2
-  i32.store $0 offset=8
-  local.get $5
-  local.get $3
-  i32.store $0 offset=12
-  local.get $5
-  local.get $4
-  i32.store $0 offset=16
-  local.get $0
-  local.get $1
-  local.get $2
-  local.get $3
-  local.get $4
-  call $assembly/index/MessageContentV1Pack
-  local.set $0
-  global.get $~lib/memory/__stack_pointer
-  i32.const 20
-  i32.add
-  global.set $~lib/memory/__stack_pointer
-  local.get $0
+  i32.const 34624
+  i32.const 34672
+  i32.const 1
+  i32.const 1
+  call $~lib/builtins/abort
+  unreachable
  )
- (func $export:assembly/index/MessageContentV1Unpack (param $0 i32) (result i32)
+ (func $export:assembly/containerContent/ContainerPack (param $0 i32) (param $1 i32) (result i32)
+  (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
   global.set $~lib/memory/__stack_pointer
-  global.get $~lib/memory/__stack_pointer
-  i32.const 1828
-  i32.lt_s
-  if
-   i32.const 34624
-   i32.const 34672
+  block $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   local.tee $2
+   local.get $0
+   i32.store $0
+   local.get $2
+   i32.const 4
+   i32.sub
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   local.tee $2
+   i32.const 0
+   i32.store $0
+   local.get $2
+   local.get $0
+   i32.store $0
+   local.get $2
+   i32.const 12
+   i32.sub
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner0
+   global.get $~lib/memory/__stack_pointer
+   local.tee $2
+   i64.const 0
+   i64.store $0
+   local.get $2
+   i32.const 0
+   i32.store $0 offset=8
+   local.get $2
+   local.get $0
+   i32.store $0
+   local.get $2
+   local.get $0
+   call $~lib/typedarray/Uint8Array#get:length
+   i32.const 8
+   i32.add
+   call $assembly/smartBuffer/SmartBuffer.ofSize
+   local.tee $2
+   i32.store $0 offset=4
+   global.get $~lib/memory/__stack_pointer
+   local.get $2
+   i32.store $0
+   local.get $2
    i32.const 1
-   i32.const 1
-   call $~lib/builtins/abort
-   unreachable
+   call $assembly/smartBuffer/SmartBuffer#writeUint8
+   global.get $~lib/memory/__stack_pointer
+   local.get $2
+   i32.store $0
+   local.get $2
+   local.get $1
+   i32.const 0
+   i32.ne
+   call $assembly/smartBuffer/SmartBuffer#writeUint8
+   global.get $~lib/memory/__stack_pointer
+   local.get $2
+   i32.store $0
+   global.get $~lib/memory/__stack_pointer
+   local.get $0
+   i32.store $0 offset=8
+   local.get $2
+   local.get $0
+   call $assembly/smartBuffer/SmartBuffer#writeBytes
+   global.get $~lib/memory/__stack_pointer
+   local.get $2
+   i32.store $0
+   local.get $2
+   call $assembly/smartBuffer/SmartBuffer#get:bytes
+   local.set $0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 12
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $0
+   return
   end
+  i32.const 34624
+  i32.const 34672
+  i32.const 1
+  i32.const 1
+  call $~lib/builtins/abort
+  unreachable
+ )
+ (func $export:assembly/messageContent/MessageContentPack (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
+  (local $5 i32)
+  (local $6 i32)
   global.get $~lib/memory/__stack_pointer
-  local.get $0
-  i32.store $0
-  local.get $0
-  call $assembly/index/MessageContentV1Unpack
-  local.set $0
+  i32.const 20
+  i32.sub
+  global.set $~lib/memory/__stack_pointer
+  block $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   local.tee $5
+   local.get $0
+   i32.store $0
+   local.get $5
+   local.get $1
+   i32.store $0 offset=4
+   local.get $5
+   local.get $2
+   i32.store $0 offset=8
+   local.get $5
+   local.get $3
+   i32.store $0 offset=12
+   local.get $5
+   local.get $4
+   i32.store $0 offset=16
+   block $__inlined_func$assembly/messageContent/MessageContentPack (result i32)
+    local.get $5
+    i32.const 20
+    i32.sub
+    global.set $~lib/memory/__stack_pointer
+    block $folding-inner0
+     global.get $~lib/memory/__stack_pointer
+     i32.const 1828
+     i32.lt_s
+     br_if $folding-inner0
+     global.get $~lib/memory/__stack_pointer
+     local.tee $5
+     i32.const 0
+     i32.const 20
+     memory.fill $0
+     local.get $5
+     local.get $0
+     i32.store $0
+     local.get $5
+     local.get $1
+     i32.store $0 offset=4
+     local.get $5
+     local.get $2
+     i32.store $0 offset=8
+     local.get $5
+     local.get $3
+     i32.store $0 offset=12
+     local.get $5
+     local.get $4
+     i32.store $0 offset=16
+     local.get $5
+     i32.const 12
+     i32.sub
+     global.set $~lib/memory/__stack_pointer
+     global.get $~lib/memory/__stack_pointer
+     i32.const 1828
+     i32.lt_s
+     br_if $folding-inner0
+     global.get $~lib/memory/__stack_pointer
+     local.tee $5
+     i64.const 0
+     i64.store $0
+     local.get $5
+     i32.const 0
+     i32.store $0 offset=8
+     local.get $5
+     local.get $0
+     i32.store $0
+     local.get $0
+     call $~lib/typedarray/Uint8Array#get:length
+     local.set $6
+     global.get $~lib/memory/__stack_pointer
+     local.get $1
+     i32.store $0
+     local.get $1
+     call $~lib/typedarray/Uint8Array#get:length
+     local.get $6
+     i32.add
+     local.set $6
+     global.get $~lib/memory/__stack_pointer
+     local.get $2
+     i32.store $0
+     local.get $2
+     call $~lib/typedarray/Uint8Array#get:length
+     local.get $6
+     i32.add
+     i32.const 9
+     i32.add
+     local.set $6
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store $0
+     local.get $3
+     call $~lib/typedarray/Uint8Array#get:length
+     local.get $6
+     i32.add
+     local.set $6
+     global.get $~lib/memory/__stack_pointer
+     local.get $4
+     i32.store $0
+     local.get $5
+     local.get $4
+     call $~lib/typedarray/Uint8Array#get:length
+     local.get $6
+     i32.add
+     call $assembly/smartBuffer/SmartBuffer.ofSize
+     local.tee $5
+     i32.store $0 offset=4
+     global.get $~lib/memory/__stack_pointer
+     local.get $5
+     i32.store $0
+     local.get $5
+     i32.const 1
+     call $assembly/smartBuffer/SmartBuffer#writeUint8
+     global.get $~lib/memory/__stack_pointer
+     local.get $5
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.store $0 offset=8
+     local.get $5
+     local.get $0
+     call $assembly/smartBuffer/SmartBuffer#writeBytes16Length
+     global.get $~lib/memory/__stack_pointer
+     local.get $5
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $1
+     i32.store $0 offset=8
+     local.get $5
+     local.get $1
+     call $assembly/smartBuffer/SmartBuffer#writeBytes16Length
+     global.get $~lib/memory/__stack_pointer
+     local.get $5
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $2
+     i32.store $0 offset=8
+     local.get $5
+     local.get $2
+     call $assembly/smartBuffer/SmartBuffer#writeBytes16Length
+     global.get $~lib/memory/__stack_pointer
+     local.get $5
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store $0 offset=8
+     local.get $5
+     local.get $3
+     call $assembly/smartBuffer/SmartBuffer#writeBytes16Length
+     global.get $~lib/memory/__stack_pointer
+     local.get $5
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $4
+     i32.store $0 offset=8
+     local.get $5
+     local.get $4
+     call $assembly/smartBuffer/SmartBuffer#writeBytes
+     global.get $~lib/memory/__stack_pointer
+     local.get $5
+     i32.store $0
+     local.get $5
+     call $assembly/smartBuffer/SmartBuffer#get:bytes
+     local.set $0
+     global.get $~lib/memory/__stack_pointer
+     i32.const 12
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     global.get $~lib/memory/__stack_pointer
+     i32.const 20
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     local.get $0
+     br $__inlined_func$assembly/messageContent/MessageContentPack
+    end
+    br $folding-inner1
+   end
+   local.set $0
+   global.get $~lib/memory/__stack_pointer
+   i32.const 20
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $0
+   return
+  end
+  i32.const 34624
+  i32.const 34672
+  i32.const 1
+  i32.const 1
+  call $~lib/builtins/abort
+  unreachable
+ )
+ (func $export:assembly/messageContent/MessageContentUnpack (param $0 i32) (result i32)
+  (local $1 i32)
+  (local $2 i32)
+  (local $3 i32)
+  (local $4 i32)
+  (local $5 i32)
+  (local $6 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
-  i32.add
+  i32.sub
   global.set $~lib/memory/__stack_pointer
-  local.get $0
+  block $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   local.tee $1
+   local.get $0
+   i32.store $0
+   local.get $1
+   i32.const 20
+   i32.sub
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 1828
+   i32.lt_s
+   br_if $folding-inner1
+   global.get $~lib/memory/__stack_pointer
+   local.tee $1
+   i32.const 0
+   i32.const 20
+   memory.fill $0
+   local.get $1
+   local.get $0
+   i32.store $0
+   local.get $1
+   local.get $0
+   call $assembly/smartBuffer/SmartBuffer#constructor
+   local.tee $3
+   i32.store $0 offset=4
+   global.get $~lib/memory/__stack_pointer
+   local.get $3
+   i32.store $0 offset=8
+   block $__inlined_func$assembly/messageContent/MessageContentUnpack
+    local.get $3
+    call $assembly/smartBuffer/SmartBuffer#readUint8
+    local.tee $4
+    i32.const 1
+    i32.eq
+    if
+     global.get $~lib/memory/__stack_pointer
+     local.tee $1
+     local.get $3
+     i32.store $0 offset=8
+     local.get $1
+     local.get $0
+     i32.store $0
+     local.get $1
+     i32.const 36
+     i32.sub
+     global.set $~lib/memory/__stack_pointer
+     global.get $~lib/memory/__stack_pointer
+     i32.const 1828
+     i32.lt_s
+     br_if $folding-inner1
+     global.get $~lib/memory/__stack_pointer
+     local.tee $1
+     i32.const 0
+     i32.const 36
+     memory.fill $0
+     local.get $1
+     local.get $3
+     i32.store $0
+     local.get $1
+     local.get $3
+     call $assembly/smartBuffer/SmartBuffer#readBytes16Length
+     local.tee $2
+     i32.store $0 offset=4
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     call $assembly/smartBuffer/SmartBuffer#readBytes16Length
+     local.tee $5
+     i32.store $0 offset=8
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     call $assembly/smartBuffer/SmartBuffer#readBytes16Length
+     local.tee $1
+     i32.store $0 offset=12
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     call $assembly/smartBuffer/SmartBuffer#readBytes16Length
+     local.tee $3
+     i32.store $0 offset=16
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.store $0
+     global.get $~lib/memory/__stack_pointer
+     local.get $2
+     i32.store $0 offset=20
+     global.get $~lib/memory/__stack_pointer
+     local.set $6
+     local.get $2
+     call $~lib/typedarray/Uint8Array#get:length
+     local.get $4
+     i32.add
+     local.set $4
+     global.get $~lib/memory/__stack_pointer
+     local.get $5
+     i32.store $0 offset=20
+     local.get $5
+     call $~lib/typedarray/Uint8Array#get:length
+     local.get $4
+     i32.add
+     local.set $4
+     global.get $~lib/memory/__stack_pointer
+     local.get $1
+     i32.store $0 offset=20
+     local.get $1
+     call $~lib/typedarray/Uint8Array#get:length
+     local.get $4
+     i32.add
+     i32.const 8
+     i32.add
+     local.set $4
+     global.get $~lib/memory/__stack_pointer
+     local.get $3
+     i32.store $0 offset=20
+     local.get $3
+     call $~lib/typedarray/Uint8Array#get:length
+     local.get $4
+     i32.add
+     local.set $4
+     i32.const 1
+     global.set $~argumentsLength
+     local.get $6
+     local.get $0
+     local.get $4
+     call $~lib/typedarray/Uint8Array#slice@varargs
+     local.tee $4
+     i32.store $0 offset=24
+     global.get $~lib/memory/__stack_pointer
+     i32.const 5
+     call $~lib/rt/__newArray
+     local.tee $0
+     i32.store $0 offset=28
+     global.get $~lib/memory/__stack_pointer
+     local.get $0
+     i32.load $0 offset=4
+     i32.store $0 offset=32
+     local.get $0
+     i32.const 0
+     local.get $2
+     call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+     local.get $0
+     i32.const 1
+     local.get $5
+     call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+     local.get $0
+     i32.const 2
+     local.get $1
+     call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+     local.get $0
+     i32.const 3
+     local.get $3
+     call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+     local.get $0
+     i32.const 4
+     local.get $4
+     call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+     global.get $~lib/memory/__stack_pointer
+     i32.const 36
+     i32.add
+     global.set $~lib/memory/__stack_pointer
+     br $__inlined_func$assembly/messageContent/MessageContentUnpack
+    end
+    global.get $~lib/memory/__stack_pointer
+    i32.const 1
+    call $~lib/rt/__newArray
+    local.tee $0
+    i32.store $0 offset=12
+    global.get $~lib/memory/__stack_pointer
+    local.get $0
+    i32.load $0 offset=4
+    i32.store $0 offset=16
+    local.get $0
+    i32.const 0
+    i32.const 0
+    call $~lib/typedarray/Uint8Array#constructor
+    call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
+   end
+   global.get $~lib/memory/__stack_pointer
+   i32.const 20
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   global.get $~lib/memory/__stack_pointer
+   i32.const 4
+   i32.add
+   global.set $~lib/memory/__stack_pointer
+   local.get $0
+   return
+  end
+  i32.const 34624
+  i32.const 34672
+  i32.const 1
+  i32.const 1
+  call $~lib/builtins/abort
+  unreachable
  )
  (func $byn-split-outlined-A$~lib/rt/itcms/__visit (param $0 i32)
   global.get $~lib/rt/itcms/white

@@ -17,15 +17,26 @@ async function instantiate(module, imports = {}) {
   const { exports } = await WebAssembly.instantiate(module, adaptedImports);
   const memory = exports.memory || imports.env.memory;
   const adaptedExports = Object.setPrototypeOf({
-    MessageContentV1Pack(subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes) {
-      // assembly/index/MessageContentV1Pack(~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array) => ~lib/typedarray/Uint8Array
+    ContainerUnpack(data) {
+      // assembly/containerContent/ContainerUnpack(~lib/typedarray/Uint8Array) => ~lib/array/Array<~lib/typedarray/Uint8Array>
+      data = __lowerTypedArray(Uint8Array, 4, 0, data) || __notnull();
+      return __liftArray(pointer => __liftTypedArray(Uint8Array, __getU32(pointer)), 2, exports.ContainerUnpack(data) >>> 0);
+    },
+    ContainerPack(bodyBytes, isEncoded) {
+      // assembly/containerContent/ContainerPack(~lib/typedarray/Uint8Array, bool) => ~lib/typedarray/Uint8Array
+      bodyBytes = __lowerTypedArray(Uint8Array, 4, 0, bodyBytes) || __notnull();
+      isEncoded = isEncoded ? 1 : 0;
+      return __liftTypedArray(Uint8Array, exports.ContainerPack(bodyBytes, isEncoded) >>> 0);
+    },
+    MessageContentPack(subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes) {
+      // assembly/messageContent/MessageContentPack(~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array) => ~lib/typedarray/Uint8Array
       subjectBytes = __retain(__lowerTypedArray(Uint8Array, 4, 0, subjectBytes) || __notnull());
       signature = __retain(__lowerTypedArray(Uint8Array, 4, 0, signature) || __notnull());
       attacheds = __retain(__lowerTypedArray(Uint8Array, 4, 0, attacheds) || __notnull());
       previousMessageAddress = __retain(__lowerTypedArray(Uint8Array, 4, 0, previousMessageAddress) || __notnull());
       bodyBytes = __lowerTypedArray(Uint8Array, 4, 0, bodyBytes) || __notnull();
       try {
-        return __liftTypedArray(Uint8Array, exports.MessageContentV1Pack(subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes) >>> 0);
+        return __liftTypedArray(Uint8Array, exports.MessageContentPack(subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes) >>> 0);
       } finally {
         __release(subjectBytes);
         __release(signature);
@@ -33,10 +44,10 @@ async function instantiate(module, imports = {}) {
         __release(previousMessageAddress);
       }
     },
-    MessageContentV1Unpack(data) {
-      // assembly/index/MessageContentV1Unpack(~lib/typedarray/Uint8Array) => ~lib/array/Array<~lib/typedarray/Uint8Array>
+    MessageContentUnpack(data) {
+      // assembly/messageContent/MessageContentUnpack(~lib/typedarray/Uint8Array) => ~lib/array/Array<~lib/typedarray/Uint8Array>
       data = __lowerTypedArray(Uint8Array, 4, 0, data) || __notnull();
-      return __liftArray(pointer => __liftTypedArray(Uint8Array, __getU32(pointer)), 2, exports.MessageContentV1Unpack(data) >>> 0);
+      return __liftArray(pointer => __liftTypedArray(Uint8Array, __getU32(pointer)), 2, exports.MessageContentUnpack(data) >>> 0);
     },
   }, exports);
   function __liftString(pointer) {
@@ -121,8 +132,10 @@ async function instantiate(module, imports = {}) {
 }
 export const {
   memory,
-  MessageContentV1Pack,
-  MessageContentV1Unpack
+  ContainerUnpack,
+  ContainerPack,
+  MessageContentPack,
+  MessageContentUnpack
 } = await (async url => instantiate(
   await (async () => {
     try { return await globalThis.WebAssembly.compileStreaming(globalThis.fetch(url)); }

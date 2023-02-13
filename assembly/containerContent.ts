@@ -6,19 +6,16 @@ const V1 = 0x01;
 
 export function ContainerPack(
     bodyBytes: Uint8Array,
-    isEncoded: bool,
 ): Uint8Array {
-    return PackV1(bodyBytes, isEncoded)
+    return PackV1(bodyBytes)
 }
 
 function PackV1(
     bodyBytes: Uint8Array,
-    isEncoded: bool,
 ): Uint8Array {
 
-    const buf = SmartBuffer.ofSize(1 + 2 + 1 + 4 + bodyBytes.length);
+    const buf = SmartBuffer.ofSize(V1 + bodyBytes.length);
     buf.writeUint8(V1);
-    buf.writeUint8(isEncoded ? 1 : 0);
     buf.writeBytes(bodyBytes);
 
     return buf.bytes
@@ -42,8 +39,7 @@ function UnpackV1(
     version: i32
 ): Uint8Array[] {
 
-    const isEncoded = buf.readUint8();
-    const bodyBytes = data.slice(version + 2 + 1 + 4);
+    const bodyBytes = data.slice(version);
 
-    return [new Uint8Array(isEncoded), bodyBytes]
+    return [bodyBytes]
 }

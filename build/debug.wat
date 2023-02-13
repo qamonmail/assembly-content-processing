@@ -1,8 +1,8 @@
 (module
  (type $i32_=>_i32 (func (param i32) (result i32)))
  (type $i32_i32_=>_none (func (param i32 i32)))
- (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $i32_=>_none (func (param i32)))
+ (type $i32_i32_=>_i32 (func (param i32 i32) (result i32)))
  (type $i32_i32_i32_=>_i32 (func (param i32 i32 i32) (result i32)))
  (type $i32_i32_i32_=>_none (func (param i32 i32 i32)))
  (type $none_=>_none (func))
@@ -3436,11 +3436,10 @@
   global.set $~lib/memory/__stack_pointer
  )
  (func $assembly/containerContent/UnpackV1 (param $buf i32) (param $data i32) (param $version i32) (result i32)
-  (local $isEncoded i32)
   (local $bodyBytes i32)
+  (local $4 i32)
   (local $5 i32)
   (local $6 i32)
-  (local $7 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 16
   i32.sub
@@ -3452,28 +3451,14 @@
   global.get $~lib/memory/__stack_pointer
   i64.const 0
   i64.store $0 offset=8
-  local.get $buf
-  local.set $7
-  global.get $~lib/memory/__stack_pointer
-  local.get $7
-  i32.store $0
-  local.get $7
-  call $assembly/smartBuffer/SmartBuffer#readUint8
-  local.set $isEncoded
   global.get $~lib/memory/__stack_pointer
   local.get $data
-  local.set $7
+  local.set $6
   global.get $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $6
   i32.store $0
-  local.get $7
+  local.get $6
   local.get $version
-  i32.const 2
-  i32.add
-  i32.const 1
-  i32.add
-  i32.const 4
-  i32.add
   i32.const 1
   global.set $~argumentsLength
   i32.const 0
@@ -3481,35 +3466,29 @@
   local.tee $bodyBytes
   i32.store $0 offset=4
   global.get $~lib/memory/__stack_pointer
-  i32.const 2
+  i32.const 1
   i32.const 2
   i32.const 5
   i32.const 0
   call $~lib/rt/__newArray
-  local.tee $5
+  local.tee $4
   i32.store $0 offset=8
   global.get $~lib/memory/__stack_pointer
-  local.get $5
+  local.get $4
   i32.load $0 offset=4
-  local.tee $6
+  local.tee $5
   i32.store $0 offset=12
-  local.get $5
+  local.get $4
   i32.const 0
-  i32.const 0
-  local.get $isEncoded
-  call $~lib/typedarray/Uint8Array#constructor
-  call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-  local.get $5
-  i32.const 1
   local.get $bodyBytes
   call $~lib/array/Array<~lib/typedarray/Uint8Array>#__set
-  local.get $5
-  local.set $7
+  local.get $4
+  local.set $6
   global.get $~lib/memory/__stack_pointer
   i32.const 16
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $7
+  local.get $6
   return
  )
  (func $assembly/containerContent/ContainerUnpack (param $data i32) (result i32)
@@ -3914,9 +3893,9 @@
   local.get $1
   return
  )
- (func $assembly/containerContent/PackV1 (param $bodyBytes i32) (param $isEncoded i32) (result i32)
+ (func $assembly/containerContent/PackV1 (param $bodyBytes i32) (result i32)
   (local $buf i32)
-  (local $3 i32)
+  (local $2 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.sub
@@ -3929,75 +3908,56 @@
   i32.const 0
   i32.store $0 offset=8
   global.get $~lib/memory/__stack_pointer
-  i32.const 1
-  i32.const 2
-  i32.add
-  i32.const 1
-  i32.add
-  i32.const 4
-  i32.add
+  global.get $assembly/containerContent/V1
   local.get $bodyBytes
-  local.set $3
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $3
+  local.get $2
   i32.store $0
-  local.get $3
+  local.get $2
   call $~lib/typedarray/Uint8Array#get:length
   i32.add
   call $assembly/smartBuffer/SmartBuffer.ofSize
   local.tee $buf
   i32.store $0 offset=4
   local.get $buf
-  local.set $3
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $3
+  local.get $2
   i32.store $0
-  local.get $3
+  local.get $2
   global.get $assembly/containerContent/V1
   call $assembly/smartBuffer/SmartBuffer#writeUint8
   local.get $buf
-  local.set $3
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $3
+  local.get $2
   i32.store $0
-  local.get $3
-  local.get $isEncoded
-  if (result i32)
-   i32.const 1
-  else
-   i32.const 0
-  end
-  call $assembly/smartBuffer/SmartBuffer#writeUint8
-  local.get $buf
-  local.set $3
-  global.get $~lib/memory/__stack_pointer
-  local.get $3
-  i32.store $0
-  local.get $3
+  local.get $2
   local.get $bodyBytes
-  local.set $3
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $3
+  local.get $2
   i32.store $0 offset=8
-  local.get $3
+  local.get $2
   call $assembly/smartBuffer/SmartBuffer#writeBytes
   local.get $buf
-  local.set $3
+  local.set $2
   global.get $~lib/memory/__stack_pointer
-  local.get $3
+  local.get $2
   i32.store $0
-  local.get $3
+  local.get $2
   call $assembly/smartBuffer/SmartBuffer#get:bytes
-  local.set $3
+  local.set $2
   global.get $~lib/memory/__stack_pointer
   i32.const 12
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $3
+  local.get $2
   return
  )
- (func $assembly/containerContent/ContainerPack (param $bodyBytes i32) (param $isEncoded i32) (result i32)
-  (local $2 i32)
+ (func $assembly/containerContent/ContainerPack (param $bodyBytes i32) (result i32)
+  (local $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -4007,19 +3967,18 @@
   i32.const 0
   i32.store $0
   local.get $bodyBytes
-  local.set $2
+  local.set $1
   global.get $~lib/memory/__stack_pointer
-  local.get $2
+  local.get $1
   i32.store $0
-  local.get $2
-  local.get $isEncoded
+  local.get $1
   call $assembly/containerContent/PackV1
-  local.set $2
+  local.set $1
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $2
+  local.get $1
   return
  )
  (func $assembly/smartBuffer/SmartBuffer#writeUint16 (param $this i32) (param $val i32)
@@ -4963,8 +4922,8 @@
   global.set $~lib/memory/__stack_pointer
   local.get $1
  )
- (func $export:assembly/containerContent/ContainerPack (param $0 i32) (param $1 i32) (result i32)
-  (local $2 i32)
+ (func $export:assembly/containerContent/ContainerPack (param $0 i32) (result i32)
+  (local $1 i32)
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.sub
@@ -4974,14 +4933,13 @@
   local.get $0
   i32.store $0
   local.get $0
-  local.get $1
   call $assembly/containerContent/ContainerPack
-  local.set $2
+  local.set $1
   global.get $~lib/memory/__stack_pointer
   i32.const 4
   i32.add
   global.set $~lib/memory/__stack_pointer
-  local.get $2
+  local.get $1
  )
  (func $export:assembly/messageContent/MessageContentPack (param $0 i32) (param $1 i32) (param $2 i32) (param $3 i32) (param $4 i32) (result i32)
   (local $5 i32)

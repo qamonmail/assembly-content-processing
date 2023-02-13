@@ -9,10 +9,9 @@ export declare function ContainerUnpack(data: Uint8Array): Array<Uint8Array>;
 /**
  * assembly/containerContent/ContainerPack
  * @param bodyBytes `~lib/typedarray/Uint8Array`
- * @param isEncoded `bool`
  * @returns `~lib/typedarray/Uint8Array`
  */
-export declare function ContainerPack(bodyBytes: Uint8Array, isEncoded: boolean): Uint8Array;
+export declare function ContainerPack(bodyBytes: Uint8Array): Uint8Array;
 /**
  * assembly/messageContent/MessageContentPack
  * @param subjectBytes `~lib/typedarray/Uint8Array`

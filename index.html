@@ -8,7 +8,7 @@
             keyAttached: '01010101010101010101010101010110'
         }
 
-        import { MessageContentV1Pack, MessageContentV1Unpack } from "./build/release.js";
+        import { MessageContentPack, MessageContentUnpack, ContainerPack, ContainerUnpack } from "./build/release.js";
 
         const subjectBytes = new TextEncoder().encode("Nullam dictum felis eu pede mollis pretium.");
         const bodyBytes = new TextEncoder().encode("Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.");
@@ -17,11 +17,23 @@
         const previousMessageAddress = new TextEncoder().encode("0:4758012a7dfd31bef6203721d11f9d5de07d4150d011090c9ba2fadc28343712");
 
         if (subjectBytes.length < 1024 && attacheds.length < 1024 && signature.length < 1024) {
-            const message = MessageContentV1Pack(subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes)
-            console.log(message)
 
-            const version = MessageContentV1Unpack(message)
-            console.log(version)
+            // Pack message
+            const message = MessageContentPack(subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes)
+            console.log(message)
+            
+            // Pack container
+            const container = ContainerPack(message)
+            console.log(container)
+
+            // Unpack container
+            const containerUnpack = ContainerUnpack(container)
+            console.log(containerUnpack)
+            
+            // Unpack message
+            const messageUnpack = MessageContentUnpack(containerUnpack[0])
+            console.log(messageUnpack)
+
         }
     </script>
 </head>

@@ -22,11 +22,10 @@ async function instantiate(module, imports = {}) {
       data = __lowerTypedArray(Uint8Array, 4, 0, data) || __notnull();
       return __liftArray(pointer => __liftTypedArray(Uint8Array, __getU32(pointer)), 2, exports.ContainerUnpack(data) >>> 0);
     },
-    ContainerPack(bodyBytes, isEncoded) {
-      // assembly/containerContent/ContainerPack(~lib/typedarray/Uint8Array, bool) => ~lib/typedarray/Uint8Array
+    ContainerPack(bodyBytes) {
+      // assembly/containerContent/ContainerPack(~lib/typedarray/Uint8Array) => ~lib/typedarray/Uint8Array
       bodyBytes = __lowerTypedArray(Uint8Array, 4, 0, bodyBytes) || __notnull();
-      isEncoded = isEncoded ? 1 : 0;
-      return __liftTypedArray(Uint8Array, exports.ContainerPack(bodyBytes, isEncoded) >>> 0);
+      return __liftTypedArray(Uint8Array, exports.ContainerPack(bodyBytes) >>> 0);
     },
     MessageContentPack(subjectBytes, signature, attacheds, previousMessageAddress, bodyBytes) {
       // assembly/messageContent/MessageContentPack(~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array, ~lib/typedarray/Uint8Array) => ~lib/typedarray/Uint8Array

@@ -6,23 +6,26 @@ const V1 = 0x01;
 
 export function ContainerPack(
     bodyBytes: Uint8Array,
+    nonce: Uint8Array
 ): Uint8Array {
-    return PackV1(bodyBytes)
+    return PackV1(bodyBytes, nonce)
 }
 
 function PackV1(
     bodyBytes: Uint8Array,
+    nonce: Uint8Array
 ): Uint8Array {
 
-    const buf = SmartBuffer.ofSize(V1 + bodyBytes.length);
+    const buf = SmartBuffer.ofSize(V1 + 2 + nonce.length + bodyBytes.length);
     buf.writeUint8(V1);
+    buf.writeBytes16Length(nonce);
     buf.writeBytes(bodyBytes);
 
     return buf.bytes
 }
 
 export function ContainerUnpack(
-    data: Uint8Array
+    data: Uint8Array,
 ): Uint8Array[] {
     const buf = new SmartBuffer(data);
     const version = buf.readUint8();
@@ -39,7 +42,8 @@ function UnpackV1(
     version: i32
 ): Uint8Array[] {
 
-    const bodyBytes = data.slice(version);
+    const nonce = buf.readBytes16Length();
+    const bodyBytes = data.slice(version + 2 + nonce.length);
 
-    return [bodyBytes]
+    return [nonce, bodyBytes]
 }
